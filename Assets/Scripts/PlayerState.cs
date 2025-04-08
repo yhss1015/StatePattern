@@ -5,14 +5,19 @@ using UnityEngine;
 /// </summary>
 public class PlayerState 
 {
-    //플레이어의 상태를 관리하는 상태 머신 참조
-    protected PlayerStateMachine stateMachine;
+    
+    protected PlayerStateMachine stateMachine;  //플레이어의 상태를 관리하는 상태 머신 참조
+    protected Player player;    //현재 플레이어 객체 참조
 
-    //현재 플레이어 객체 참조
-    protected Player player;
+    protected Rigidbody2D rb;
 
+    protected float xInput;
+    protected float yInput;
     //애니메이션에서 사용할 상태 변수 이름 (애니메이션 트리거로 활용 가능)
     private string animBoolName;
+
+    protected float stateTimer;
+    protected bool triggerCalled;
 
 
     /// <summary>
@@ -36,7 +41,9 @@ public class PlayerState
     /// </summary>
     public virtual void Enter()
     {
-        Debug.Log("엔터 " + animBoolName);
+        player.anim.SetBool(animBoolName, true);
+        rb = player.rb;
+        triggerCalled = false;
     }
     /// <summary>
     /// 매 프레임마다 호출되는 함수.
@@ -44,7 +51,12 @@ public class PlayerState
     /// </summary>
     public virtual void Update()
     {
-        Debug.Log("업데이트 " + animBoolName);
+        stateTimer -= Time.deltaTime;
+
+
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
+        player.anim.SetFloat("yVelocity", rb.linearVelocityY);
     }
     /// <summary>
     /// 상태가 종료될 때 호출되는 함수.
@@ -52,8 +64,12 @@ public class PlayerState
     /// </summary>
     public virtual void Exit()
     {
-        Debug.Log("엑시트 " + animBoolName);
+        player.anim.SetBool(animBoolName, false);
     }
 
+    public virtual void AnimationFinishTrigger()
+    {
+        triggerCalled = true;
+    }
 
 }

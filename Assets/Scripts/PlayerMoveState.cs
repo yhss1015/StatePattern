@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMoveState : PlayerState
+public class PlayerMoveState : PlayerGroundedState
 {
 
     public PlayerMoveState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
@@ -17,10 +17,11 @@ public class PlayerMoveState : PlayerState
     public override void Update()
     {
         base.Update();
+        player.SetVelocity(xInput*player.moveSpeed, rb.linearVelocityY);
 
-        if (Input.GetKeyDown(KeyCode.N))
+        if (xInput==0 || player.IsWallDetected())
         {
-            player.stateMachine.ChangeState(player.idleState);
+            stateMachine.ChangeState(player.idleState);            
         }
     }
 

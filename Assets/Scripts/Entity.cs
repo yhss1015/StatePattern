@@ -10,6 +10,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected LayerMask whatIsWall;
 
+
+
     public int facingDir { get; private set; } = 1;
     protected bool facingRight = true;
 

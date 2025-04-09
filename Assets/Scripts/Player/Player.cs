@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     public bool isBusy { get; private set; }
     [Header("공격 정보")]
@@ -16,25 +16,9 @@ public class Player : MonoBehaviour
     public float dashSpeed;
     public float dashDuration;
     public float dashDir { get; private set; }
-    public float slidingSpeed;
-
-    [Header("충돌 정보")]
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckDistance;
-    [SerializeField] private Transform wallCheck;
-    [SerializeField] private float wallCheckDistance;
-    [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private LayerMask whatIsWall;
-
-    public int facingDir { get; private set; } = 1;
-    private bool facingRight = true;
+    public float slidingSpeed;         
     
-
-    #region Components
-    public Animator anim { get; private set; }
-    public Rigidbody2D rb { get; private set; }
-    #endregion
-
+        
     #region States
     // 플레이어의 상태를 관리하는 상태 머신
     public PlayerStateMachine stateMachine { get; private set; }
@@ -51,7 +35,7 @@ public class Player : MonoBehaviour
     
     #endregion
 
-    private void Awake()
+    protected override void Awake()
     {
         // 상태 머신 인스턴스 생성
         stateMachine = new PlayerStateMachine();
@@ -69,18 +53,19 @@ public class Player : MonoBehaviour
         
     }
 
-    private void Start()
+    protected override void Start()
     {
-        anim = GetComponentInChildren<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        base.Start();
 
         stateMachine.Initialize(idleState); //idle상태로 초기화
     }
 
 
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         stateMachine.currentstate.Update();
         CheckForDashInput();
     }
@@ -117,48 +102,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    #region 속력
-    public void ZeroVelocity() => rb.linearVelocity = new Vector2(0, 0);
+    
+        
 
-
-    public void SetVelocity(float _xVelocity, float _yVelocity)
-    {
-        rb.linearVelocity = new Vector2(_xVelocity, _yVelocity);
-        FlipController(_xVelocity);
-    }
-    #endregion
-
-    #region 충돌
-    public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
-    public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
-    }
-    #endregion
-
-    #region 플립
-    public void Flip()
-    {
-        facingDir *= -1;
-        facingRight = !facingRight;
-        transform.Rotate(0, 180, 0);
-    }
-
-    public void FlipController(float _x)
-    {
-        if(_x>0 && !facingRight)
-        {
-            Flip();
-        }
-        else if(_x<0 && facingRight)
-        {
-            Flip();
-        }
-    }
-    #endregion
+    
 }

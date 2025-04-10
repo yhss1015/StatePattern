@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EnemyState : MonoBehaviour
+public class EnemyState
 {
 
     protected EnemyStateMachine stateMachine;
     protected Enemy enemyBase;
+    protected Rigidbody2D rb;
 
     protected bool triggerCalled;    
     private string animBoolName;
@@ -21,7 +22,8 @@ public class EnemyState : MonoBehaviour
 
     public virtual void Enter()
     {
-        triggerCalled = true;
+        triggerCalled =false;
+        rb = enemyBase.rb;
         enemyBase.anim.SetBool(animBoolName, true);
     }
 
@@ -33,5 +35,10 @@ public class EnemyState : MonoBehaviour
     public virtual void Exit()
     {
         enemyBase.anim.SetBool(animBoolName, false);
+    }
+
+    public virtual void AnimationFinishTrigger()
+    {
+        triggerCalled = true;
     }
 }

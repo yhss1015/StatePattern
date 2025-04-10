@@ -29,7 +29,7 @@ public class PlayerJumpState : PlayerState
 
         if (player.IsWallDetected())
         {
-            stateMachine.ChangeState(player.wallSlideState);
+            //stateMachine.ChangeState(player.wallSlideState);
         }
 
         if (xInput != 0)

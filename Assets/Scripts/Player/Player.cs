@@ -5,18 +5,22 @@ public class Player : Entity
 {
     public bool isBusy { get; private set; }
     [Header("공격 정보")]
-    public Vector2[] playerMovement;
+    public Vector2[] attackMovement;
+    public float counterAttackDuration = 0.2f;
+    
+
+
     [Header("이동 정보")]
     public float moveSpeed = 10f;
     public float jumpForce = 10f;
 
-    [Header("대시 정보")]
-    [SerializeField] private float dashCooldown;
-    private float dashUsageTimer;
+    [Header("대시 정보")]    
     public float dashSpeed;
     public float dashDuration;
     public float dashDir { get; private set; }
     public float slidingSpeed;         
+
+    public SkillManager skill { get; private set; }
     
         
     #region States
@@ -32,6 +36,9 @@ public class Player : Entity
     public PlayerWallSlideState wallSlideState { get; private set; }
     public PlayerWallJumpState wallJump { get; private set; }
     public PlayerPrimaryAttackState primaryAttack { get; private set; }
+    public PlayerCounterAttackState counterAttack { get; private set; }
+    public PlayerAimSwordState aimSword { get; private set; }
+    public PlayerCatchSwordSate catchSword { get; private set; }
     
     #endregion
 
@@ -50,12 +57,18 @@ public class Player : Entity
         wallJump = new PlayerWallJumpState(this, stateMachine, "Jump");
 
         primaryAttack = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
+        counterAttack = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
+
+        aimSword = new PlayerAimSwordState(this, stateMachine, "AimSword");
+        catchSword = new PlayerCatchSwordSate(this, stateMachine, "CatchSword");
         
     }
 
     protected override void Start()
     {
         base.Start();
+
+        skill = SkillManager.instance;
 
         stateMachine.Initialize(idleState); //idle상태로 초기화
     }
@@ -87,11 +100,11 @@ public class Player : Entity
             return;
         }
 
-        dashUsageTimer -= Time.deltaTime;
+        
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)&&dashUsageTimer<0)
+        if (Input.GetKeyDown(KeyCode.LeftShift)&&skill.dash.CanUseSkill())
         {
-            dashUsageTimer = dashCooldown;
+            
 
             dashDir = Input.GetAxisRaw("Horizontal");
             if (dashDir == 0)

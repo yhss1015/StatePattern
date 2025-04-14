@@ -16,7 +16,7 @@ public class SkeletonBattleState : EnemyState
     {
         base.Enter();
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = PlayerManager.instance.player.transform;
     }
        
 
@@ -31,7 +31,7 @@ public class SkeletonBattleState : EnemyState
 
             if(enemy.IsPlayerDetected().distance<enemy.attackDistance)
             {
-                Debug.Log("공격");
+                
                 if(CanAttack()) // 쿨다운이 아니면 공격
                 {
                     stateMachine.ChangeState(enemy.attackState);
@@ -70,7 +70,7 @@ public class SkeletonBattleState : EnemyState
             enemy.lastTimeAttacked = Time.time;
             return true;
         }
-        Debug.Log("공격 쿨다운");
+        
         return false;
     }
 }

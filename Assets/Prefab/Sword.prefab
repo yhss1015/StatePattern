@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5979529892719583586}
   - component: {fileID: 9374000502319012}
   - component: {fileID: 2023170259486877232}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4646978995008356835}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.85264015, w: 0.52249867}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6986906411314893265}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 117}
 --- !u!212 &9374000502319012
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1426698391
   m_SortingLayer: 4
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1633007794, guid: f6b296ee51c42564abe9c05f1c502ecd, type: 3}
+  m_Sprite: {fileID: -2004053239, guid: f6b296ee51c42564abe9c05f1c502ecd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5020692239187107652}
   - component: {fileID: 8122653055169003124}
   - component: {fileID: 3364479293576992378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,12 +202,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.77
+  m_Radius: 0.48
 --- !u!114 &3364479293576992378
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class Enemy : Entity
     public float moveSpeed = 10f;
     public float idleTime;
     public float battleTime;
+    private float defaultMoveSpeed;
 
     [Header("공격 정보")]
     public float attackDistance;
@@ -28,6 +30,8 @@ public class Enemy : Entity
     {
         base.Awake();
         stateMachine = new EnemyStateMachine();
+
+        defaultMoveSpeed = moveSpeed;
     }
 
     protected override void Update()
@@ -38,6 +42,28 @@ public class Enemy : Entity
         //Debug.Log(IsPlayerDetected().collider.gameObject.name + "플레이어 보고있음.");
     }
 
+    public virtual void FreezeTime(bool _timeFrozen)
+    {
+        if (_timeFrozen)
+        {
+            moveSpeed = 0;
+            anim.speed = 0;
+        }
+        else
+        {
+            moveSpeed = defaultMoveSpeed;
+            anim.speed = 1;
+        }
+    }
+
+    protected virtual IEnumerator FreezeTimerFor(float _seconds)
+    {
+        FreezeTime(true);
+        yield return new WaitForSeconds(_seconds);
+        FreezeTime(false);
+    }
+
+    #region Counter Attack Window
     public virtual void OpenCounterAttackWindow()
     {
         canBeStunned = true;
@@ -60,6 +86,7 @@ public class Enemy : Entity
         return false;
     }
 
+    #endregion
 
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 

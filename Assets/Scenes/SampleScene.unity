@@ -2621,8 +2621,12 @@ MonoBehaviour:
   keyCodeList: 710000006500000076000000620000006e000000
   maxSize: 13
   growSpeed: 1
-  canGrow: 0
-  targets: []
+  shrinkSpeed: 0
+  canShrink: 0
+  canGrow: 1
+  canCreateHotKeys: 0
+  amountOfAttacks: 0
+  cloneAttackCooldown: 0.3
 --- !u!212 &935970482
 SpriteRenderer:
   m_ObjectHideFlags: 0

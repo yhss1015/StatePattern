@@ -1164,7 +1164,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed3e74745b8bc7b4ea7121fa07682884, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84835,9 +84835,10 @@ GameObject:
   - component: {fileID: 1750076893}
   - component: {fileID: 1750076892}
   - component: {fileID: 1750076891}
-  - component: {fileID: 1750076894}
   - component: {fileID: 1750076895}
   - component: {fileID: 1750076896}
+  - component: {fileID: 1750076897}
+  - component: {fileID: 1750076898}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -84885,22 +84886,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1750076894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750076890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ea8386f5dacdfc4e9c92db3b32bba96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  clonePrefab: {fileID: 8736392288127457675, guid: f3e32c145da414d448bbd51a8c5ec409, type: 3}
-  cloneDuration: 1.5
-  canAttack: 1
 --- !u!114 &1750076895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84953,6 +84938,48 @@ MonoBehaviour:
   maxSize: 15
   growSpeed: 3
   shrinkSpeed: 6
+--- !u!114 &1750076897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750076890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33868e2ceb48d4b46a7b436bddcbe9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0.2
+  crystalDuration: 3
+  crystalPrefab: {fileID: 6555110725094566929, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+  canExplolde: 1
+  canMoveToEnemy: 1
+  moveSpeed: 5
+  canUseMultiStacks: 1
+  amountOfStacks: 3
+  multiStackCooldown: 3
+  useTimeWindow: 2.5
+  crystalLeft:
+  - {fileID: 6555110725094566929, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+  - {fileID: 6555110725094566929, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+  - {fileID: 6555110725094566929, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+--- !u!114 &1750076898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750076890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57eca9dca0feb6d44b2883985f49d720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0.2
+  clonePrefab: {fileID: 8736392288127457675, guid: f3e32c145da414d448bbd51a8c5ec409, type: 3}
+  cloneDuration: 0.5
+  canAttack: 1
 --- !u!1 &1928112698
 GameObject:
   m_ObjectHideFlags: 0
@@ -85136,6 +85163,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1122091523}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1057439077876731596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486029175543772734, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555110725094566929, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
+      propertyPath: m_Name
+      value: Crystal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d289f8bd3c3657f4e8ebbdd948c9ed9d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -85153,3 +85237,4 @@ SceneRoots:
   - {fileID: 1750076893}
   - {fileID: 1043273442}
   - {fileID: 1496233689}
+  - {fileID: 1057439077876731596}

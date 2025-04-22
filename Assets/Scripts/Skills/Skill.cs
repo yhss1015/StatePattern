@@ -5,17 +5,21 @@ public class Skill : MonoBehaviour
     [SerializeField] protected float cooldown;
     protected float cooldownTimer;
 
+
     protected Player player;
 
+    
     protected virtual void Start()
     {
         player = PlayerManager.instance.player;
     }
-
+    
+    
     protected virtual void Update()
     {
         cooldownTimer -= Time.deltaTime;
     }
+
 
     public virtual bool CanUseSkill()
     {
@@ -23,18 +27,45 @@ public class Skill : MonoBehaviour
         {
             UseSkill();
             cooldownTimer = cooldown;
-            return true;
+            return true;        
         }
 
-        Debug.Log("Skill is on cooldown");
-        return false;
 
+        Debug.Log("Skill is on cooldown");
+
+        return false;
     }
+
 
     public virtual void UseSkill()
     {
-        //½ºÅ³ »ç¿ë
+        //ìŠ¤í‚¬ì‚¬ìš©
     }
 
+    protected virtual Transform FindClosetEnemy(Transform _checkTransform)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(_checkTransform.position, 25);
+
+        float closestDistance = Mathf.Infinity;
+        Transform closestEnemy = null;
+
+
+        foreach (var hit in colliders)
+        {
+            if (hit.GetComponent<Enemy>() != null)
+            {
+                float distanceToEnemy = Vector2.Distance(_checkTransform.position, hit.transform.position);
+
+                if (distanceToEnemy < closestDistance)
+                {
+                    closestDistance = distanceToEnemy;
+                    closestEnemy = hit.transform;
+                }
+
+            }
+        }
+
+        return closestEnemy;
+    }
 
 }

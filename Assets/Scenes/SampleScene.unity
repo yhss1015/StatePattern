@@ -1673,7 +1673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &602654996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2008,16 +2008,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c9577fa5e63974f859e4a4e0267cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength:
+    baseValue: 10
+    modifiers: 
+  agility:
+    baseValue: 0
+    modifiers: 
+  intelligence:
+    baseValue: 0
+    modifiers: 
+  vitality:
+    baseValue: 0
+    modifiers: 
   damage:
     baseValue: 10
+    modifiers: 
+  critChance:
+    baseValue: 80
+    modifiers: 
+  critPower:
+    baseValue: 150
     modifiers: 
   maxHealth:
     baseValue: 100
     modifiers: 
-  strength:
-    baseValue: 5
+  armor:
+    baseValue: 0
     modifiers: 
-  currentHealth: 0
+  evasion:
+    baseValue: 0
+    modifiers: 
+  magicResistance:
+    baseValue: 0
+    modifiers: 
+  fireDamage:
+    baseValue: 0
+    modifiers: 
+  iceDamage:
+    baseValue: 0
+    modifiers: 
+  lightingDamage:
+    baseValue: 0
+    modifiers: 
+  isIgnited: 0
+  isChilled: 0
+  isShocked: 0
+  currentHealth: 100
 --- !u!1 &705772429
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,16 +2776,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af293a26834747b449e23ebbdb3ae693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength:
+    baseValue: 5
+    modifiers: 
+  agility:
+    baseValue: 0
+    modifiers: 
+  intelligence:
+    baseValue: 0
+    modifiers: 
+  vitality:
+    baseValue: 0
+    modifiers: 
   damage:
     baseValue: 10
+    modifiers: 
+  critChance:
+    baseValue: 90
+    modifiers: 
+  critPower:
+    baseValue: 150
     modifiers: 
   maxHealth:
     baseValue: 100
     modifiers: 
-  strength:
-    baseValue: 5
+  armor:
+    baseValue: 0
     modifiers: 
-  currentHealth: 0
+  evasion:
+    baseValue: 80
+    modifiers: 
+  magicResistance:
+    baseValue: 0
+    modifiers: 
+  fireDamage:
+    baseValue: 0
+    modifiers: 
+  iceDamage:
+    baseValue: 0
+    modifiers: 
+  lightingDamage:
+    baseValue: 0
+    modifiers: 
+  isIgnited: 0
+  isChilled: 0
+  isShocked: 0
+  currentHealth: 1000
 --- !u!1 &897767419
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class Entity : MonoBehaviour
     public EntityFX fx { get; private set; }
 
     public SpriteRenderer sr { get; private set; }
+    public CharacterStats stats { get; private set; }
+    public CapsuleCollider2D cd { get; private set; }
+   
     #endregion
 
     [Header("³Ë¹é Á¤º¸")]
@@ -47,6 +50,8 @@ public class Entity : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         fx = GetComponent<EntityFX>();
         rb = GetComponent<Rigidbody2D>();
+        stats = GetComponent<CharacterStats>();
+        cd = GetComponent<CapsuleCollider2D>();
     }
 
 
@@ -56,7 +61,7 @@ public class Entity : MonoBehaviour
     }
 
 
-    public virtual void Damage()
+    public virtual void DamageEffect()
     {
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockBack");
@@ -147,5 +152,10 @@ public class Entity : MonoBehaviour
         {
             sr.color = Color.white;
         }
+    }
+
+    public virtual void Die()
+    {
+
     }
 }

@@ -125,6 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growSpeed: 5
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!58 &8197176967226113869
 CircleCollider2D:
   m_ObjectHideFlags: 0
